@@ -69,6 +69,23 @@
         </copy>
     </target>
 
+
+    <target name="clean" description="Clean output directories">
+        <delete>
+            <fileset dir="${build.dir}">
+                <include name="**/*.class" />
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="undeploy" description="Un-Deploy application">
+        <delete>
+            <fileset dir="${deploy.path}/${name}">
+                <include name="**/*.*" />
+            </fileset>
+        </delete>
+    </target>
+
     <!-- ============================================================== -->
     <!-- Tomcat tasks - remove these if you don't have Tomcat installed -->
     <!-- ============================================================== -->
@@ -120,6 +137,9 @@
     <target name="list" description="List Tomcat applications">
         <list url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" />
     </target>
+
+
+
 
     <!-- End Tomcat tasks -->
 
